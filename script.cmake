@@ -1,9 +1,11 @@
-# WARNING: This is wrong for multi-config generators because they don't use
-#          and typically don't even set CMAKE_BUILD_TYPE
 import sysconfig
 sysconfig.get_config_var('LIBS')
 
 sysconfig.get_config_var('LINKFORSHARED')
+
+# WARNING: This is wrong for multi-config generators because they don't use
+#          and typically don't even set CMAKE_BUILD_TYPE
+
 string(TOLOWER ${CMAKE_BUILD_TYPE} build_type)
 if (build_type STREQUAL debug)
   target_compile_definitions(exe1 PRIVATE DEBUG_BUILD)
